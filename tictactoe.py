@@ -21,14 +21,19 @@ class Game:
         response = None
         response=input("q to quit.Any other key to continue")
         while(response!='q'):
+          
           while x<9:
             self.player1.input = input("")
+            while(int(self.player1.input[0])>3 or int(self.player1.input[0])<1 or int(self.player1.input[2])>3 or int(self.player1.input[2])<1):
+               self.player1.input = input("Type correct values")
             arr[int(self.player1.input[0])-1][int(self.player1.input[2])-1]='X'
             printf(arr)
             x=x+1
             if(win(arr,'X')or x>8):
                 break
             self.player2.input = input("")
+            while(int(self.player2.input[0])>3 or int(self.player2.input[0])<1 or int(self.player2.input[2])>3 or int(self.player2.input[2])<1):
+               self.player2.input = input("Type correct values")
             arr[int(self.player2.input[0])-1][int(self.player2.input[2])-1]='O'
             printf(arr)
             if(win(arr,'O')):
@@ -43,6 +48,7 @@ class Game:
           else:
               self.player2.wins += 1
               print("{} won the match".format(self.player2.name))
+          response=input("q to quit.Any other key to continue")
         if(self.player1.wins>self.player2.wins):
             print("Congratulations!!{} won the game".format(self.player1.name))
         elif(self.player1.wins<self.player2.wins):
